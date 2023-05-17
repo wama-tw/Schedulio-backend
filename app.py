@@ -6,9 +6,12 @@ from sanic.response import text
 from sanic.response import json
 from sanic_mail import Sanic_Mail
 from env import HOST, PORT
+from cors import add_cors_headers
 
 app = Sanic("Schedulio")
 
+# Fill in CORS headers
+app.register_middleware(add_cors_headers, "response")
 
 @app.route("/")
 def hello(request):
